@@ -1,5 +1,16 @@
 node {
   stage('SCM') {
+    git 'https://github.com/hiteshmahatoo4/sample_check_freestyle.git'
+  }
+  stage('SonarQube analysis') {
+    withSonarQubeEnv() { // Will pick the global server connection you have configured
+      sh './gradlew sonar'
+    }
+  }
+}
+/*
+node {
+  stage('SCM') {
     checkout scm
   }
   stage('SonarQube Analysis') {
@@ -9,6 +20,7 @@ node {
   }
     
 }
+*/
 /*pipeline {
     agent any
 
