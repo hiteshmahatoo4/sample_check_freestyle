@@ -6,21 +6,21 @@
  * User Manual available at https://docs.gradle.org/8.0.2/userguide/custom_plugins.html
  */
 
-plugins {
-    // Apply the Java Gradle plugin development plugin to add support for developing Gradle plugins
-    id 'java-gradle-plugin'
-    id "org.sonarqube"
-}
 
+buildscript {
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
 }
 
 dependencies {
     // Use JUnit Jupiter for testing.
-    classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.7"
+    classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:4.0.0.2929"
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
+}
 }
 
 gradlePlugin {
@@ -64,4 +64,10 @@ sonar {
   properties {
     property "sonar.projectKey", "sample_check_freestyle"
   }
+}
+
+plugins {
+    // Apply the Java Gradle plugin development plugin to add support for developing Gradle plugins
+    id 'java-gradle-plugin'
+    id "org.sonarqube" 
 }
