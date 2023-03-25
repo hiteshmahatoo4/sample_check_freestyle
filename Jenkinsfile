@@ -19,6 +19,14 @@ pipeline {
             }
       }
     }
+        stage('SCM') {
+    checkout scm
+  }
+  stage('SonarQube Analysis') {
+    withSonarQubeEnv() {
+      sh "./gradlew sonar"
+    }
+  }
 
         stage ('Scan using Gradle') {
             steps {
