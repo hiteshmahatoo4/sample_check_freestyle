@@ -9,7 +9,7 @@
 plugins {
     // Apply the Java Gradle plugin development plugin to add support for developing Gradle plugins
     id 'java-gradle-plugin'
-    id "org.sonarqube" version "3.5.0.2730"
+    id "org.sonarqube"
 }
 
 repositories {
@@ -19,6 +19,7 @@ repositories {
 
 dependencies {
     // Use JUnit Jupiter for testing.
+    classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.7"
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
 }
 
