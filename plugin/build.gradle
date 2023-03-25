@@ -9,6 +9,7 @@
 plugins {
     // Apply the Java Gradle plugin development plugin to add support for developing Gradle plugins
     id 'java-gradle-plugin'
+    id "org.sonarqube" version "3.5.0.2730"
 }
 
 repositories {
@@ -56,4 +57,10 @@ tasks.named('check') {
 tasks.named('test') {
     // Use JUnit Jupiter for unit tests.
     useJUnitPlatform()
+}
+
+sonar {
+  properties {
+    property "sonar.projectKey", "sample_check_freestyle"
+  }
 }
