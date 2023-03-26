@@ -8,7 +8,10 @@ node {
   stage('SonarQube analysis') {
     withSonarQubeEnv() { // Will pick the global server connection you have configured
       sh 'mvn -f MyWebApp/pom.xml sonar:sonar'
-      sh './gradlew sonar'
+      sh './gradlew sonar \
+  -Dsonar.projectKey=sample_check_freestyle_key \
+  -Dsonar.host.url=http://192.168.0.102:9000 \
+  -Dsonar.login=squ_d6daa867dc5c611116c639dbc70bdf0f8d4a08d4'
     }
   }
 }
