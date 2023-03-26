@@ -13,6 +13,6 @@ apply plugin: "org.sonarqube"
 
 sonar {
   properties {
-    property "sonar.projectKey", "sample_check_freestyle"
+    property "sonar.projectKey", "sample_check_freestyle_key"
   }
 }
