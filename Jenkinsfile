@@ -1,20 +1,28 @@
 node {
+  tools {
+     maven 'Apache Maven 3.6.3'
+    }
   stage('SCM') {
     git 'https://github.com/hiteshmahatoo4/sample_check_freestyle.git'
   }
   stage('SonarQube analysis') {
     withSonarQubeEnv() { // Will pick the global server connection you have configured
+      sh 'mvn -f MyWebApp/pom.xml sonar:sonar'
       sh './gradlew sonar'
     }
   }
 }
 /*
 node {
+  agent any
+
+    
   stage('SCM') {
     checkout scm
   }
   stage('SonarQube Analysis') {
     withSonarQubeEnv(sonarqube) {
+      
       sh "./gradlew sonar"
     }
   }
